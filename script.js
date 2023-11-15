@@ -1,6 +1,7 @@
 let countdown;
 let timerDisplay = document.getElementById('timer');
 let startButton = document.getElementById('startButton');
+let stopButton = document.getElementById('stopButton');
 
 function startTimer() {
     let seconds = 5 * 60; // 5 dakika
@@ -11,13 +12,18 @@ function startTimer() {
         if (seconds < 0) {
             clearInterval(countdown);
             alert("Süre doldu!");
-            startButton.disabled = false; // Başla butonunu tekrar etkinleştir
+            enableButtons(); // Butonları tekrar etkinleştir
             return;
         }
         displayTimeLeft(seconds);
     }, 1000);
 
-    startButton.disabled = true; // Başla butonunu devre dışı bırak
+    disableButtons(); // Başla butonunu devre dışı bırak
+}
+
+function stopTimer() {
+    clearInterval(countdown);
+    enableButtons(); // Butonları tekrar etkinleştir
 }
 
 function displayTimeLeft(seconds) {
@@ -30,4 +36,14 @@ function displayTimeLeft(seconds) {
 
     let display = `${minutes}:${remainingSeconds}`;
     timerDisplay.textContent = display;
+}
+
+function disableButtons() {
+    startButton.disabled = true;
+    stopButton.disabled = false;
+}
+
+function enableButtons() {
+    startButton.disabled = false;
+    stopButton.disabled = true;
 }
