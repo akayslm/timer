@@ -3,27 +3,28 @@ let timerDisplay = document.getElementById('timer');
 let startButton = document.getElementById('startButton');
 
 function startTimer() {
-    let seconds = 5* 60; 
+    let seconds = 5 * 60; // 5 dakika
     displayTimeLeft(seconds);
 
     countdown = setInterval(() => {
         seconds--;
-        if(seconds < 0) {
+        if (seconds < 0) {
             clearInterval(countdown);
             alert("Süre doldu!");
+            startButton.disabled = false; // Başla butonunu tekrar etkinleştir
             return;
         }
         displayTimeLeft(seconds);
     }, 1000);
 
-    startButton.disabled = true; 
+    startButton.disabled = true; // Başla butonunu devre dışı bırak
 }
 
 function displayTimeLeft(seconds) {
-    let minutes = Math, floor(seconds / 60);
+    let minutes = Math.floor(seconds / 60);
     let remainingSeconds = seconds % 60;
 
-    if(remainingSeconds < 10) {
+    if (remainingSeconds < 10) {
         remainingSeconds = '0' + remainingSeconds;
     }
 
