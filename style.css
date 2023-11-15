@@ -1,0 +1,22 @@
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 100px;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+#timer{
+    font-size: 3em;
+}
+
+#startButton{
+    padding: 10 px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
